@@ -60,7 +60,7 @@
             let password = document.getElementsByName('password').value;
             let confirm_password = document.getElementsByName('confirm_password').value;
 
-            let params = 'age='+age+'name='+name+'&email'+email+'username='+username+'&password'+password+'&confirm_password'+confirm_password;
+            let params = 'age='+age+'&name='+name+'&email='+email+'&username='+username+'&password='+password+'&confirm_password='+confirm_password;
 
             let xhr = new XMLHttpRequest();
             xhr.open('POST', "<?php echo URLROOT . '/users/registerAjax'; ?>", true);

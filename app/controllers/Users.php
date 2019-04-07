@@ -146,27 +146,32 @@
                   'password_err' => '',
                   'confirm_password_err' => ''
               ];
-              if(empty($data['age'])){
+              if(empty($data['age'])) {
                   $data['age_err'] = 'Please enter an age';
-                  // Validate email
-                  if(empty($data['email'])) {
-                      $data['email_err'] = 'Please enter an email';
-                  }
-                  // Validate name
-                  if(empty($data['name'])){
-                      $data['name_err'] = 'Please enter a name';
-                  }
-                  if(empty($data['username'])){
-                      $data['username_err'] = 'Please enter a username';
-                  }
+              }
+              // Validate email
+              if(empty($data['email'])) {
+                  $data['email_err'] = 'Please enter an email';
+
               } else{
                   // Check Email
-                  if($this->userModel->findUserByName($data['name'])){
-                      $data['name_err'] = 'Name is already taken.';
-                  }
                   if($this->userModel->findUserByEmail($data['email'])){
                       $data['email_err'] = 'Email is already taken.';
                   }
+              }
+
+              if(empty($data['name'])){
+                  $data['name_err'] = 'Please enter a name';
+
+              }else{
+                  if($this->userModel->findUserByName($data['name'])){
+                    $data['name_err'] = 'Name is already taken.';
+                    }
+              }
+
+              if(empty($data['username'])){
+                  $data['username_err'] = 'Please enter a username';
+              }else{
                   if($this->userModel->findUserByUsername($data['username'])){
                       $data['username_err'] = 'Username is already taken.';
                   }
